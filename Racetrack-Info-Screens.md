@@ -516,3 +516,60 @@ flowchart TB
     style LT fill:#F3E5F5,stroke:#8E24AA
     style PUB fill:#F5F5F5,stroke:#9E9E9E
 ```
+
+## Interfaces
+
+All the graphics and interfaces can be found from this Figma file:
+<a href="https://www.figma.com/design/HI78f7M6DIbfTG6tC34vjW/Untitled?node-id=114-425&t=KKkd1rsxCxa6hVsN-1">Figma file</a>
+
+#### Front-Desk
+
+<a href="https://www.figma.com/proto/HI78f7M6DIbfTG6tC34vjW/Untitled?node-id=97-2&t=ln49lfqNFuNt2WwE-1&scaling=contain&content-scaling=fixed&page-id=0%3A1">Front-Desk Prototype</a>
+
+<img src="images/front-desk.png" alt="Front-Desk Interface" width="100%">
+
+- Adding a new race session-button is colored with the attention color, cos it's one of the main action buttons
+- Default shows the next coming race session
+- Little green squares are statuses like "In Briefing" so the receptionist knows when it might be too late to add new drivers
+- Bottom left view with a crocodile is just a quick view to check if there are missing drivers or accidently added a driver that should be in for example Session 3
+- "Time left for the next race" starts like in 3min and tries to get the user's attention if they are in a middle of a conversation
+- Sessions are listed in the botton of the window
+- Easy access buttons without extra steps, solo action
+
+#### Race-Control
+
+<a href="https://www.figma.com/proto/HI78f7M6DIbfTG6tC34vjW/Untitled?node-id=104-37&t=ln49lfqNFuNt2WwE-1&scaling=contain&content-scaling=fixed&page-id=0%3A1">Race-Control Prototype</a>
+
+<table>
+<tr>
+<td width="33%" valign="top">
+<img src="images/Race-Track-1.png" alt="Race-Track - Drivers to bried-view" width="100%">
+</td>
+<td width="33%" valign="top">
+<img src="images/Race-Track-2.png" alt="Race-Track - Safe-view" width="100%">
+</td>
+<td width="33%" valign="top">
+<img src="images/Race-Track-3.png" alt="Race-Track - Danger-view" width="100%">
+</td>
+</tr>
+<tr>
+<td width="33%" valign="top">
+<img src="images/Race-Track-4.png" alt="Race-Track - Hazard-view" width="100%">
+</td>
+<td width="33%" valign="top">
+<img src="images/Race-Track-5.png" alt="Race-Track - Finish-view" width="100%">
+</td>
+</tr>
+</table>
+
+#### Leader-Board
+
+<a href="https://www.figma.com/proto/HI78f7M6DIbfTG6tC34vjW/Untitled?node-id=104-37&t=ln49lfqNFuNt2WwE-1&scaling=contain&content-scaling=fixed&page-id=0%3A1">Leader Board Interface Prototypes during the race and after</a> (If you click the prototype, it will change the view between them)
+
+##### During the race
+
+<img src="images/Leader-Board-Current.png" alt="Leader-Board Interface during the race" width="100%">
+
+##### After the race
+
+<img src="images/Leader-Board-After.png" alt="Leader-Board Interface after end the session" width="100%">
