@@ -528,13 +528,13 @@ All the graphics and interfaces can be found from this Figma file:
 
 <img src="images/front-desk.png" alt="Front-Desk Interface" width="100%">
 
-- Adding a new race session-button is colored with the attention color, cos it's one of the main action buttons
-- Default shows the next coming race session
-- Little green squares are statuses like "In Briefing" so the receptionist knows when it might be too late to add new drivers
-- Bottom left view with a crocodile is just a quick view to check if there are missing drivers or accidently added a driver that should be in for example Session 3
-- "Time left for the next race" starts like in 3min and tries to get the user's attention if they are in a middle of a conversation
-- Sessions are listed in the botton of the window
-- Easy access buttons without extra steps, solo action
+- The "Add race session" button uses the accent colour because it is one of the main actions.
+- By default, the view shows the next upcoming race session.
+- Small green status tags (e.g. "In Briefing") show the state of each session, so the receptionist knows when it may be too late to add drivers.
+- The card with the crocodile in the bottom left is a quick overview of the session's drivers. It makes it easy to spot a missing driver, or one who was added by mistake and belongs in another session (e.g. Session 3).
+- The "Time left for the next race" bar starts at about 3 minutes and is designed to catch the receptionist's attention, even in the middle of a conversation.
+- All sessions are listed at the bottom of the window.
+- Every action is a single click, with no extra steps.
 
 #### Race-Control
 
@@ -562,6 +562,16 @@ All the graphics and interfaces can be found from this Figma file:
 </tr>
 </table>
 
+- Designed for one-handed phone use: large buttons and short labels that stay readable outdoors in bright sunlight.
+- Before the race, the screen shows only the drivers to brief and a "Start race" button, with the hint "Press after the drivers have been briefed".
+- Status tags (e.g. "Next", "Race in progress", "Cars returning to pit lane") show the state of the session at a glance.
+- "Current mode" is always visible at the top in the mode's colour, so the Safety Official can see that a change actually went through.
+- The four modes are large buttons in a 2×2 grid. The active mode is outlined and labelled "Active".
+- Each mode button also names its flag colour (Green, Yellow, Red, Chequered), so the buttons match the flags on the track.
+- Danger is a single tap with no confirmation, because in an emergency every second counts.
+- After Finish, the other modes are greyed out, because Finish is final.
+- "End session" stays disabled until the mode is Finish, with the hint "Press when all cars are back in the pit lane".
+
 #### Leader-Board
 
 <a href="https://www.figma.com/proto/HI78f7M6DIbfTG6tC34vjW/Untitled?node-id=104-37&t=ln49lfqNFuNt2WwE-1&scaling=contain&content-scaling=fixed&page-id=0%3A1">Leader Board Interface Prototypes during the race and after</a> (If you click the prototype, it will change the view between them)
@@ -573,3 +583,110 @@ All the graphics and interfaces can be found from this Figma file:
 ##### After the race
 
 <img src="images/Leader-Board-After.png" alt="Leader-Board Interface after end the session" width="100%">
+
+- A dark background with very large text keeps the board readable from several metres away on a large screen.
+- Car numbers sit in bright green circles, so a spectator can quickly find a specific car (e.g. "My son is in car 4").
+- Remaining time and the current flag are always visible in the left column. The flag is shown in its own colour (e.g. green SAFE, red DANGER), so spectators understand why the cars suddenly slow down.
+- The heading changes from "Now racing" to "Previous race", so the results stay on screen after the race and it is clear they belong to the finished race.
+- A driver with no completed lap shows "-:--.---" instead of an empty cell.
+- The fullscreen button is small and out of the way in the bottom left corner.
+
+#### Lap-Line-Tracker
+
+<a href="https://www.figma.com/proto/HI78f7M6DIbfTG6tC34vjW/Untitled?node-id=168-29&t=rysiZRSwzs4o7oGP-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=168%3A29&show-proto-sidebar=1">Lap Line Tracker Interface Prototypes during the race and after</a> (If you click the prototype, it will change the view between them except if you click the buttons)
+
+
+<table>
+<tr>
+<td width="50%" valign="top">
+<p>Lap-Line Vertical View during the race</p>
+</td>
+<td width="50%" valign="top">
+<p>Lap-Line Vertical View after the race</p>
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<img src="images/Lap-Line-Recorder-Vertical.png" alt="Lap-Line-Recorder-Vertical -view" width="100%">
+</td>
+<td width="50" valign="top">
+<img src="images/Lap-Line-Recorder-No-Race.png" alt="Lap-Line-Recorder-No-Race -view" width="100%">
+</td>
+</tr>
+<tr>
+<td width="100%" valign="top" colspan="2">
+<p>Lap-Line Vertical View during the race</p>
+</td>
+</tr>
+<tr>
+<td width="100%%" valign="top" colspan="2">
+<img src="images/Lap-Line-Recorder-Horizontal.png" alt="Lap-Line-Recorder-Horizontal -view" width="100%">
+</td>
+</tr>
+</table>
+
+- Eight large buttons that show only the car number, so the observer can hit the right car with a quick glance.
+- Buttons have space between them, so a fast tap does not hit the wrong car.
+- The "Recent laps" list shows every tap with the car, lap number and time, and highlights the newest one. The observer can see right away that the tap went through.
+- The heading tells the state of the race: "Race in progress – Tap a car as it crosses the lap line" during the race, and "Race session ended" after it.
+- When the session has ended, the buttons are greyed out and disabled until the next race starts.
+- In landscape, the buttons keep the same order and the information moves to the left column, so nothing jumps around when the tablet is turned.
+
+#### Next-Race
+
+<a href="https://www.figma.com/proto/HI78f7M6DIbfTG6tC34vjW/Untitled?node-id=319-1020&t=2gKhaNTXNrhricGq-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=348%3A74&show-proto-sidebar=1">Next Race Interface Prototypes before the race and during it</a> (If you click the prototype, it will change the view between them)
+
+##### Before the race
+
+<img src="images/Next-Race-Waiting.png" alt="Next Race Interface before the race" width="100%">
+
+##### During the race
+
+<img src="images/Next-Race-Proceed.png" alt="Next Race Interface during the race" width="100%">
+
+- Drivers and their car numbers are shown in two columns, so all eight fit on screen without scrolling and can be read from a distance.
+- During the race, "Prepare for your turn..." tells the drivers they are next, but not yet called.
+- When it is their turn, a large framed "Proceed to the paddock" message appears, so drivers do not miss their turn even if they did not hear the name call.
+- The crocodile mascot changes with the message (waiting with a watch / waving the chequered flag) to support it without extra text.
+- The session name is shown in the bottom left, so drivers can check that it matches the session they booked.
+- Plain language, no racing jargon.
+
+#### Race-Countdown
+
+<a href="https://www.figma.com/proto/HI78f7M6DIbfTG6tC34vjW/Untitled?node-id=342-90&t=vX2Yb9RjhXihoDj4-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=348%3A74&show-proto-sidebar=1">Race-Countdown Interface Prototype</a> 
+
+
+<img src="images/Race-Countdown.png" alt="Next Race Interface before the race" width="100%">
+
+- The screen shows only the remaining time, as large as possible, so it can be read from far away or from a moving car.
+- Black on white gives the highest possible contrast, also in bright sunlight.
+- The only other element is a small fullscreen button in the top right corner.
+- Question: "Ready", "Set", "Go" or numbers going down from 10 to zero to start the race?
+
+#### Race-Flag
+
+<a href="https://www.figma.com/proto/HI78f7M6DIbfTG6tC34vjW/Untitled?node-id=104-37&t=ln49lfqNFuNt2WwE-1&scaling=contain&content-scaling=fixed&page-id=0%3A1](https://www.figma.com/proto/HI78f7M6DIbfTG6tC34vjW/Untitled?node-id=348-74&t=qYxLNoFoT1qps8bw-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=348%3A74&show-proto-sidebar=1)">Race-Flag Prototype</a>
+
+<table>
+<tr>
+<td width="50%" valign="top">
+<img src="images/Race-Flag-Green.png" alt="Race-Track - Drivers to bried-view" width="100%">
+</td>
+<td width="50%" valign="top">
+<img src="images/Race-Flag-Yellow.png" alt="Race-Track - Safe-view" width="100%">
+</td>
+</tr>
+<tr>
+<td width="50%" valign="top">
+<img src="images/Race-Flag-Red.png" alt="Race-Track - Danger-view" width="100%">
+</td>
+<td width="50%" valign="top">
+<img src="images/Race-Flag-Checkered.png" alt="Race-Track - Danger-view" width="100%">
+</td>
+</tr>
+</table>
+
+- The whole screen is filled with the colour of the current mode, so drivers can see it from the corner of their eye without reading anything.
+- The colours match real racing flags: green, yellow, red, and a large chequered pattern for Finish.
+- No text on the screen, so there is nothing to read while driving.
+- The only other element is a small fullscreen button in the top right corner.
