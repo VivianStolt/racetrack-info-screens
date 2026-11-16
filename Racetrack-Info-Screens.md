@@ -526,7 +526,7 @@ All the graphics and interfaces can be found from this Figma file:
 
 <a href="https://www.figma.com/proto/HI78f7M6DIbfTG6tC34vjW/Untitled?node-id=97-2&t=ln49lfqNFuNt2WwE-1&scaling=contain&content-scaling=fixed&page-id=0%3A1">Front-Desk Prototype</a>
 
-<img src="images/front-desk.png" alt="Front-Desk Interface" width="100%">
+<img src="images/Front-Desk.png" alt="Front-Desk Interface" width="100%">
 
 - The "Add race session" button uses the accent colour because it is one of the main actions.
 - By default, the view shows the next upcoming race session.
