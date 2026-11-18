@@ -1,7 +1,7 @@
 ## Dependencies
 - express.js
 - socket.io
-- some frontend framework?
+- React
 
 ## Directory Structure
 
@@ -13,13 +13,12 @@ racetrack-info-screens/
 ├── package-lock.json
 ├── README.md
 ├── server.js
-└── src/
+├── frontend/
+└── backend/
   ├── config/
   ├── controllers/
   ├── models/
   ├── routes/
-  ├── views/
-  ├── public/
   └── tests/
 ```
 
@@ -32,6 +31,4 @@ racetrack-info-screens/
 - **controllers/**: Business logic
 - **models/**: Data models
 - **routes/**: Application route handling
-- **views/**: HTML templates
-- **public/**: Static HTML, CSS, and JavaScript
 - **tests/**: Tests
