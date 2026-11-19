@@ -6,5 +6,15 @@
 
 ## Usage
 
-Run `npm start`
+#### Install dependencies  
+`npm install`
+
+
+#### Set access keys
+`(TODO)`
+
+
+#### Start server
+`npm start`
+
 
