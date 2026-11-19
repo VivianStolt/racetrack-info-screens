@@ -573,3 +573,15 @@ All the graphics and interfaces can be found from this Figma file:
 ##### After the race
 
 <img src="images/Leader-Board-After.png" alt="Leader-Board Interface after end the session" width="100%">
+
+#### Home screen
+
+<a href="https://www.figma.com/proto/HI78f7M6DIbfTG6tC34vjW/Untitled?node-id=397-310&t=R21MscFxlXJ2xuvA-1&scaling=contain&content-scaling=fixed&page-id=0%3A1&starting-point-node-id=348%3A74&show-proto-sidebar=1">Home Screen Interface Prototypes employee/public -switch views</a> (If you click the prototype, it will change the view between them)
+
+##### Employer -switch
+
+<img src="images/Home-Screen-Employee.png" alt="Home-Screen Employee -switch" width="100%">
+
+##### Public -switch
+
+<img src="images/Home-Screen-Public.png" alt="Home-Screen Public -switch" width="100%">
