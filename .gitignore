@@ -1,0 +1,17 @@
+# Dependencies
+node_modules/
+
+# Tests
+coverage/
+
+# Secrets
+.env
+.env.*
+.env*.local
+
+# Logs
+logs
+*.log*
+
+# Miscellaneous
+.DS_STORE
