@@ -32,5 +32,7 @@
 - **Kept:** 
     - Helped to check single key in terminal and add env to start -script
     - I had a lot of repetition, so suggested to use filter()
+    - Taught me the meaning of NODE_ENV -> it's a common practise in Node world to tell if in development- or production environment
+    - Explained that Vite cooks React's JSX into plain JavaScript, since browsers don't understand JSX directly.
 - **Changed or rejected:** 
     - Added the key checks in the code and print
