@@ -46,3 +46,15 @@
   - Webpack: works, but needs a lot of manual configuration.
   - Next.js: has its own server, which would overlap with Express.
 - **Consequences:** the frontend has its own `package.json`, and `npm start` must serve the built frontend (`vite build`).
+
+### Login on the home page with a station selection
+
+- **Question:** How does an employee choose which interface to log in to?
+- **Decision:** The home page has a station selection (Front Desk, Race Control, Lap-line Tracker) and one access key field. The selected station decides which key the field is checked against. Front Desk is selected by default.
+- **Why:**
+  - No unnecessary login popups or changing pages for each choise
+  - Chose to use radiobuttons, cos it unables to choose only one selection
+- **Alternatives:** A separate login form on each interface's own page (e.g. `/race-control`).
+- **Consequences:**
+  - The selection must be sent to the server together with the key, so the server knows which key to compare against.
+  - Open question: what happens when someone opens `/race-control` directly without logging in? It must be blocked somehow.
