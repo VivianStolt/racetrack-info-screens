@@ -9,7 +9,8 @@
 	"main": "server.js",
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node --env-file-if-exists=.env server.js"
+		"start": "node --env-file-if-exists=.env server.js",
+		"dev": "NODE_ENV=development node --env-file-if-exists=.env server.js"
 	},
 	"repository": {
 		"type": "git",
