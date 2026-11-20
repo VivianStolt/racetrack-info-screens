@@ -1,11 +1,11 @@
 import express from 'express';
-import { USAGE_GUIDE } from './constants.js';
+import { USAGE_GUIDE } from './backend/config/constants.js';
 
 const keys = ['RECEPTIONIST_KEY', 'OBSERVER_KEY', 'SAFETY_KEY'];
 const missing = keys.filter((key) => !process.env[key]);
 if (missing.length > 0) {
-	console.log(`The following keys do not exist: ` + missing.join(', '));
-	console.log(USAGE_GUIDE);
+	console.error(`The following keys do not exist: ${missing.join(', ')}`);
+	console.error(USAGE_GUIDE);
 	process.exit(1);
 }
 
