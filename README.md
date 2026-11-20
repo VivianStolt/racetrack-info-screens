@@ -26,7 +26,7 @@ export OBSERVER_KEY=<your-key>
 export SAFETY_KEY=<your-key>
 ```
 
-`npm start` also reads a `.env` file in the project root, so you can put the keys these instead.
+`npm start` also reads a `.env` file in the project root, so you can put the keys there instead.
 
 **Set the keys before starting the server in `.env` file:**
 ```
