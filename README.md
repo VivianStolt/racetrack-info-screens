@@ -37,6 +37,17 @@ SAFETY_KEY=<your-key>
 
 `.env` is listed in `.gitignore`, so it won't be committed.
 
+#### Development
+
+During development, run two servers in separate terminals:
+
+1. Backend (Express, port 3000), in the project root:
+   `npm run dev`
+2. Frontend (Vite, port 5173), in `frontend/`:
+   `npm run dev`
+
+Open `http://localhost:5173`. Requests to `/api` are forwarded to Express.
+
 #### Start server
 `npm start`
 

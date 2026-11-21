@@ -50,3 +50,8 @@
 
 - **Asked:** how to add a 500 ms delay. 
 - **Kept:** setTimeout around the 401 response.
+
+- **Asked:** Teach, how does the React frontend (Vite, port 5173) reach the Express server (port 3000) in development?
+- **Kept:**
+  - Vite proxy: requests starting with `/api` are forwarded to `http://localhost:3000` (`frontend/vite.config.js`).
+  - Why: the browser blocks requests to another port by default (CORS), and with the proxy the frontend always calls `/api/login`, which also works in production when Express serves everything from one port.

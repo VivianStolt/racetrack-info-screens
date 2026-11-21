@@ -58,3 +58,17 @@
 - **Consequences:**
   - The selection must be sent to the server together with the key, so the server knows which key to compare against.
   - Open question: what happens when someone opens `/race-control` directly without logging in? It must be blocked somehow.
+
+  ### How the frontend reaches the server in development
+
+- **Question:** In development, Vite (port 5173) and Express (port 3000) run separately. How does the frontend send requests to Express?
+- **Decision:** Vite proxy: requests starting with `/api` are forwarded to Express.
+- **Why:**
+  - The frontend code always uses the same address (`/api/login`), both in development and in production.
+  - No CORS setup is needed for Express, because the browser only talks to one port.
+- **Alternatives:** Call Express directly (`http://localhost:3000/api/login`) and allow it with CORS. Not chosen because <your reason>, and the address would have to be changed for production.
+- **Consequences:**
+  - In development, both servers must be running.
+  - Vite must be restarted after changing `vite.config.js`.
+  - The proxy only exists in development. `npm start` must serve the built frontend from Express (not done yet).
+  - REMEMBER TO TELL JOONATAN IF SOCKET CONNECTION IS ALSO DONE THROUGH PROXY
