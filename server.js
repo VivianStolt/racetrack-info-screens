@@ -1,17 +1,21 @@
 import express from 'express';
-import { USAGE_GUIDE, WRONG_KEY_DELAY_MS } from './backend/config/constants.js';
+import {
+	PORT,
+	USAGE_GUIDE,
+	WRONG_KEY_DELAY_MS,
+} from './backend/config/constants.js';
 
 const RACE_DURATION_MS =
 	process.env.NODE_ENV === 'development'
 		? 1 * 60 * 1000 /* 1min */
 		: 10 * 60 * 1000; /* 10min */
-const raceDurationMinutes = RACE_DURATION_MS / 60000;
-const accessKeys = {
+const RACE_DURATION_MINUTES = RACE_DURATION_MS / 60000;
+const ACCESS_KEYS = {
 	'/front-desk': 'RECEPTIONIST_KEY',
 	'/lap-line-tracker': 'OBSERVER_KEY',
 	'/race-control': 'SAFETY_KEY',
 };
-const missing = Object.values(accessKeys).filter((key) => !process.env[key]);
+const missing = Object.values(ACCESS_KEYS).filter((key) => !process.env[key]);
 if (missing.length > 0) {
 	console.error(`The following keys do not exist: ${missing.join(', ')}`);
 	console.error(USAGE_GUIDE);
@@ -20,15 +24,14 @@ if (missing.length > 0) {
 
 const app = express();
 app.use(express.json());
-const port = 3000;
 
 app.get('/', (req, res) => {
-	res.send(`Race duration: ${raceDurationMinutes} min.`);
+	res.send(`Race duration: ${RACE_DURATION_MINUTES} min.`);
 });
 
 app.post('/api/login', (req, res) => {
 	const data = req.body;
-	const reqKey = accessKeys[data?.station];
+	const reqKey = ACCESS_KEYS[data?.station];
 	if (!reqKey || !data.accessKey) {
 		res.status(400).send('Bad request');
 		return;
@@ -44,6 +47,6 @@ app.post('/api/login', (req, res) => {
 });
 
 app.listen(port, () => {
-	console.log(`Listening on port http://localhost:${port}/`);
-	console.log(`Race duration: ${raceDurationMinutes} min.`);
+	console.log(`Listening on port http://localhost:${PORT}/`);
+	console.log(`Race duration: ${RACE_DURATION_MINUTES} min.`);
 });
