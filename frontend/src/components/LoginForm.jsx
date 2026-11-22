@@ -2,7 +2,7 @@ import { useState } from 'react';
 import ErrorMessages from '../config/loginErrors';
 import RadioStations from '../config/stations';
 
-const stations = [
+const STATIONS = [
 	{ value: '/front-desk', name: 'Front Desk' },
 	{ value: '/race-control', name: 'Race Control' },
 	{ value: '/lap-line-tracker', name: 'Lap-Line Tracker' },
@@ -39,7 +39,7 @@ function LoginForm() {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<RadioStations stations={stations} />
+			<RadioStations stations={STATIONS} />
 			<label>
 				Access Key
 				<input type="password" name="accessKey"></input>
