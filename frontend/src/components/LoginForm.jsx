@@ -1,4 +1,12 @@
 import { useState } from 'react';
+import ErrorMessages from '../config/loginErrors';
+import RadioStations from '../config/stations';
+
+const stations = [
+	{ value: '/front-desk', name: 'Front Desk' },
+	{ value: '/race-control', name: 'Race Control' },
+	{ value: '/lap-line-tracker', name: 'Lap-Line Tracker' },
+];
 
 function LoginForm() {
 	const [error, setError] = useState('');
@@ -10,47 +18,28 @@ function LoginForm() {
 		const formData = new FormData(form);
 		const formStation = formData.get('station');
 		const formAccessKey = formData.get('accessKey');
+
 		const response = await fetch('/api/login', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
-			body: JSON.stringify({ station: formStation, accessKey: formAccessKey }),
+			body: JSON.stringify({
+				station: formStation,
+				accessKey: formAccessKey,
+			}),
 		});
-		let errorMessage = '';
-		if (response.status === 401) {
-			errorMessage = 'Wrong access key';
-		} else if (response.status === 400) {
-			errorMessage = 'Please enter an access key';
-		} else if (response.status === 200) {
-			errorMessage = '';
-		} else {
-			errorMessage = 'Server not reachable, try again';
-		}
-		setError(errorMessage);
 		if (response.status === 200) {
 			setSuccessStation(formStation);
 		}
+
+		setError(ErrorMessages(response.status));
 	}
 	if (successStation) {
 		return <p>Logged in to {successStation}</p>;
 	}
+
 	return (
 		<form onSubmit={handleSubmit}>
-			<label>
-				<input
-					type="radio"
-					name="station"
-					value="/front-desk"
-					defaultChecked={true}
-				/>
-				Front Desk
-			</label>
-			<label>
-				<input type="radio" name="station" value="/race-control" /> Race Control
-			</label>
-			<label>
-				<input type="radio" name="station" value="/lap-line-tracker" /> Lap-Line
-				Tracker
-			</label>
+			<RadioStations stations={stations} />
 			<label>
 				Access Key
 				<input type="password" name="accessKey"></input>
