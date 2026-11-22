@@ -1,12 +1,7 @@
 import { useState } from 'react';
-import ErrorMessages from '../config/loginErrors';
-import RadioStations from '../config/stations';
-
-const STATIONS = [
-	{ value: '/front-desk', name: 'Front Desk' },
-	{ value: '/race-control', name: 'Race Control' },
-	{ value: '/lap-line-tracker', name: 'Lap-Line Tracker' },
-];
+import getLoginError from '../config/loginErrors.js';
+import { STATIONS } from '../config/stations.js';
+import StationRadio from './StationRadio.jsx';
 
 function LoginForm() {
 	const [error, setError] = useState('');
@@ -31,7 +26,7 @@ function LoginForm() {
 			setSuccessStation(formStation);
 		}
 
-		setError(ErrorMessages(response.status));
+		setError(getLoginError(response.status));
 	}
 	if (successStation) {
 		return <p>Logged in to {successStation}</p>;
@@ -39,7 +34,7 @@ function LoginForm() {
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<RadioStations stations={STATIONS} />
+			<StationRadio stations={STATIONS} />
 			<label>
 				Access Key
 				<input type="password" name="accessKey"></input>

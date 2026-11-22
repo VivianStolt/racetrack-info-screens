@@ -1,4 +1,4 @@
-function RadioStations({ stations }) {
+function StationRadio({ stations }) {
 	return stations.map((station) => (
 		<label key={station.value}>
 			<input
@@ -12,4 +12,4 @@ function RadioStations({ stations }) {
 	));
 }
 
-export default RadioStations;
+export default StationRadio;
