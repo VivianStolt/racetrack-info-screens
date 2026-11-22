@@ -32,13 +32,14 @@ app.post('/api/login', (req, res) => {
 	if (!reqKey || !data.accessKey) {
 		res.status(400).send('Bad request');
 		return;
-	}
-	if (data.accessKey === process.env[reqKey]) {
+	} else if (data.accessKey === process.env[reqKey]) {
 		res.status(200).send('Key is correct!');
-	} else {
+	} else if (data.accessKey !== process.env[reqKey]) {
 		setTimeout(() => {
 			res.status(401).send('Key is wrong.');
 		}, WRONG_KEY_DELAY_MS);
+	} else {
+		res.status(500).send('Server not reachable, try again');
 	}
 });
 

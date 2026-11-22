@@ -28,11 +28,12 @@ Example:
 
 **Responses:**
 
-| Status | When | Body |
-|--------|------|------|
-| `200 OK` | Key is correct | <decide later> |
-| `401 Unauthorized` | Key is wrong (answered after a 500 ms delay) | <decide later> |
-| `400 Bad Request` | `station` or `accessKey` is missing | <decide later> |
+| Status | When |
+|--------|------|
+| `200 OK` | Key is correct | 
+
+| `401 Unauthorized` | Key is wrong (answered after a 500 ms delay) |
+| `400 Bad Request` | `station` or `accessKey` is missing |
 
 **Used by:** `frontend/src/components/LoginForm.jsx`
 **After a successful login:** the frontend calls `establishConnection()` (Socket.IO, see below).

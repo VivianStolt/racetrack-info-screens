@@ -20,8 +20,10 @@ function LoginForm() {
 			errorMessage = 'Wrong access key';
 		} else if (response.status === 400) {
 			errorMessage = 'Please enter an access key';
-		} else {
+		} else if (response.status === 200) {
 			errorMessage = '';
+		} else {
+			errorMessage = 'Server not reachable, try again';
 		}
 		setError(errorMessage);
 		if (response.status === 200) {
