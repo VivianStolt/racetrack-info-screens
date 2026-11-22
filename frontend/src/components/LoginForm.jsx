@@ -1,7 +1,8 @@
 import { useState } from 'react';
 
 function LoginForm() {
-	const [error, errorStatus] = useState('');
+	const [error, setError] = useState('');
+	const [successStation, setSuccessStation] = useState(undefined);
 	async function handleSubmit(e) {
 		e.preventDefault();
 
@@ -14,17 +15,22 @@ function LoginForm() {
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({ station: formStation, accessKey: formAccessKey }),
 		});
-		errorStatus(() => {
-			if (response.status === 401) {
-				return 'Wrong access key';
-			} else if (response.status === 400) {
-				return 'Please enter an access key';
-			} else {
-				return '';
-			}
-		});
+		let errorMessage = '';
+		if (response.status === 401) {
+			errorMessage = 'Wrong access key';
+		} else if (response.status === 400) {
+			errorMessage = 'Please enter an access key';
+		} else {
+			errorMessage = '';
+		}
+		setError(errorMessage);
+		if (response.status === 200) {
+			setSuccessStation(formStation);
+		}
 	}
-
+	if (successStation) {
+		return <p>Logged in to {successStation}</p>;
+	}
 	return (
 		<form onSubmit={handleSubmit}>
 			<label>
