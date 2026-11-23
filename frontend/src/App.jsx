@@ -1,6 +1,7 @@
 import LoginForm from './components/LoginForm.jsx';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router';
+import RequireLogin from './components/RequireLogin.jsx';
 import FrontDesk from './pages/FrontDesk.jsx';
 import LapLineTracker from './pages/LapLineTracker.jsx';
 import LeaderBoard from './pages/LeaderBoard.jsx';
@@ -15,9 +16,30 @@ function App() {
 		<BrowserRouter>
 			<Routes>
 				<Route path="/" element={<LoginForm />} />
-				<Route path="/race-control" element={<RaceControl />} />
-				<Route path="/front-desk" element={<FrontDesk />} />
-				<Route path="/lap-line-tracker" element={<LapLineTracker />} />
+				<Route
+					path="/race-control"
+					element={
+						<RequireLogin>
+							<RaceControl />
+						</RequireLogin>
+					}
+				/>
+				<Route
+					path="/front-desk"
+					element={
+						<RequireLogin>
+							<FrontDesk />
+						</RequireLogin>
+					}
+				/>
+				<Route
+					path="/lap-line-tracker"
+					element={
+						<RequireLogin>
+							<LapLineTracker />
+						</RequireLogin>
+					}
+				/>
 				<Route path="/leader-board" element={<LeaderBoard />} />
 				<Route path="/next-race" element={<NextRace />} />
 				<Route path="/race-countdown" element={<RaceCountdown />} />
