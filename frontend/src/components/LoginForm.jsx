@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import getLoginError from '../config/loginErrors.js';
 import { STATIONS } from '../config/stations.js';
 import StationRadio from './StationRadio.jsx';
 
-function LoginForm() {
+function LoginForm({ onLoggedInStation, thisStation }) {
 	const [error, setError] = useState('');
-	const [successStation, setSuccessStation] = useState(undefined);
+	const navigate = useNavigate();
 	async function handleSubmit(e) {
 		e.preventDefault();
 
@@ -13,28 +14,28 @@ function LoginForm() {
 		const formData = new FormData(form);
 		const formStation = formData.get('station');
 		const formAccessKey = formData.get('accessKey');
+		const station = thisStation ?? formStation;
 
 		const response = await fetch('/api/login', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
-				station: formStation,
+				station,
 				accessKey: formAccessKey,
 			}),
 		});
 		if (response.status === 200) {
-			setSuccessStation(formStation);
+			onLoggedInStation(station);
+			navigate(station);
+			// establishConnection()
 		}
 
 		setError(getLoginError(response.status));
 	}
-	if (successStation) {
-		return <p>Logged in to {successStation}</p>;
-	}
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<StationRadio stations={STATIONS} />
+			{!thisStation && <StationRadio stations={STATIONS} />}
 			<label>
 				Access Key
 				<input type="password" name="accessKey"></input>
