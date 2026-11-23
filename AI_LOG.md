@@ -59,6 +59,10 @@
   - Why: the browser blocks requests to another port by default (CORS), and with the proxy the frontend always calls `/api/login`, which also works in production when Express serves everything from one port.
 
 - **Asked:** to teach, how to set the login requirement
-- **Kept:** Followed the tutorial as it was given
+- **Kept:**
+  - Followed the tutorial as it was given
+  - Learned to use parent -> children elements
+  - Learned to use callback -> function as a prop
+  - Learned to use useNavigate
 
 }

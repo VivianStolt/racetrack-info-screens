@@ -1,5 +1,6 @@
 import LoginForm from './components/LoginForm.jsx';
 import './App.css';
+import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router';
 import RequireLogin from './components/RequireLogin.jsx';
 import FrontDesk from './pages/FrontDesk.jsx';
@@ -12,14 +13,22 @@ import RaceCountdown from './pages/RaceCountdown.jsx';
 import RaceFlags from './pages/RaceFlags.jsx';
 
 function App() {
+	const [loggedInStation, setLoggedInStation] = useState(undefined);
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path="/" element={<LoginForm />} />
+				<Route
+					path="/"
+					element={<LoginForm onLoggedInStation={setLoggedInStation} />}
+				/>
 				<Route
 					path="/race-control"
 					element={
-						<RequireLogin>
+						<RequireLogin
+							loggedInStation={loggedInStation}
+							thisStation={'/race-control'}
+							onLoggedInStation={setLoggedInStation}
+						>
 							<RaceControl />
 						</RequireLogin>
 					}
@@ -27,7 +36,11 @@ function App() {
 				<Route
 					path="/front-desk"
 					element={
-						<RequireLogin>
+						<RequireLogin
+							loggedInStation={loggedInStation}
+							thisStation={'/front-desk'}
+							onLoggedInStation={setLoggedInStation}
+						>
 							<FrontDesk />
 						</RequireLogin>
 					}
@@ -35,7 +48,11 @@ function App() {
 				<Route
 					path="/lap-line-tracker"
 					element={
-						<RequireLogin>
+						<RequireLogin
+							loggedInStation={loggedInStation}
+							thisStation={'/lap-line-tracker'}
+							onLoggedInStation={setLoggedInStation}
+						>
 							<LapLineTracker />
 						</RequireLogin>
 					}

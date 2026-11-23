@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import getLoginError from '../config/loginErrors.js';
 import { STATIONS } from '../config/stations.js';
 import StationRadio from './StationRadio.jsx';
 
-function LoginForm() {
+function LoginForm({ onLoggedInStation, thisStation }) {
 	const [error, setError] = useState('');
-	const [successStation, setSuccessStation] = useState(undefined);
+	const navigate = useNavigate();
 	async function handleSubmit(e) {
 		e.preventDefault();
 
@@ -23,18 +24,16 @@ function LoginForm() {
 			}),
 		});
 		if (response.status === 200) {
-			setSuccessStation(formStation);
+			onLoggedInStation(thisStation ?? formStation);
+			navigate(formStation);
 		}
 
 		setError(getLoginError(response.status));
 	}
-	if (successStation) {
-		return <p>Logged in to {successStation}</p>;
-	}
 
 	return (
 		<form onSubmit={handleSubmit}>
-			<StationRadio stations={STATIONS} />
+			{!thisStation && <StationRadio stations={STATIONS} />}
 			<label>
 				Access Key
 				<input type="password" name="accessKey"></input>
