@@ -1,3 +1,4 @@
+import path from 'node:path';
 import express from 'express';
 import {
 	PORT,
@@ -5,6 +6,7 @@ import {
 	WRONG_KEY_DELAY_MS,
 } from './backend/config/constants.js';
 
+const DIST_PATH = path.join(import.meta.dirname, 'frontend', 'dist');
 const RACE_DURATION_MS =
 	process.env.NODE_ENV === 'development'
 		? 1 * 60 * 1000 /* 1min */
@@ -23,11 +25,8 @@ if (missing.length > 0) {
 }
 
 const app = express();
+app.use(express.static(DIST_PATH));
 app.use(express.json());
-
-app.get('/', (req, res) => {
-	res.send(`Race duration: ${RACE_DURATION_MINUTES} min.`);
-});
 
 app.post('/api/login', (req, res) => {
 	const data = req.body;
@@ -37,16 +36,22 @@ app.post('/api/login', (req, res) => {
 		return;
 	} else if (data.accessKey === process.env[reqKey]) {
 		res.status(200).send('Key is correct!');
-	} else if (data.accessKey !== process.env[reqKey]) {
+	} else {
 		setTimeout(() => {
 			res.status(401).send('Key is wrong.');
 		}, WRONG_KEY_DELAY_MS);
-	} else {
-		res.status(500).send('Server not reachable, try again');
 	}
 });
 
-app.listen(port, () => {
+app.get('/{*splat}', (_, res) => {
+	res.sendFile(path.join(DIST_PATH, 'index.html'));
+});
+
+app.listen(PORT, (error) => {
+	if (error) {
+		console.error(error);
+		process.exit(1);
+	}
 	console.log(`Listening on port http://localhost:${PORT}/`);
 	console.log(`Race duration: ${RACE_DURATION_MINUTES} min.`);
 });

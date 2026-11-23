@@ -12,25 +12,25 @@ Checks the access key for the selected station.
 
 **Request body** (JSON):
 
-| Field       | Type   | Required | Description |
-|-------------|--------|----------|-------------|
+| Field       | Type   | Required | Description                                                                       |
+| ----------- | ------ | -------- | --------------------------------------------------------------------------------- |
 | `station`   | string | yes      | Which station to log in to: `/front-desk`, `/race-control` or `/lap-line-tracker` |
-| `accessKey` | string | yes      | The key typed by the employee |
+| `accessKey` | string | yes      | The key typed by the employee                                                     |
 
 Example:
 
 ```json
 {
-"station": "/race-control",
-"accessKey": "test"
+	"station": "/race-control",
+	"accessKey": "test"
 }
 ```
 
 **Responses:**
 
-| Status | When |
-|--------|------|
-| `200 OK` | Key is correct | 
+| Status   | When           |
+| -------- | -------------- |
+| `200 OK` | Key is correct |
 
 | `401 Unauthorized` | Key is wrong (answered after a 500 ms delay) |
 | `400 Bad Request` | `station` or `accessKey` is missing |

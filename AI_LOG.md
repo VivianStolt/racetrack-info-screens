@@ -65,4 +65,10 @@
   - Learned to use callback -> function as a prop
   - Learned to use useNavigate
 
+  - **Asked:** to teach, how to build node app
+- **Kept:**
+  - Learned about `import.meta.dirname` -> reads the whole path from my computer to the projects file where I called it in
+  - Learned about `express.static` serves html, css etc. as a static files (so with react build, vite translates the files first to dist folder and that's why we point it there)
+  - In the end we created SPA-fallback (Single Page App) which catches all the paths which "do not exist", and then React's js handles it like /front-desk, /race-control etc...
+
 }
