@@ -10,6 +10,8 @@
 
 `npm install`
 
+This installs both the server and the frontend in one go (npm workspaces).
+
 #### Set access keys
 
 **Key names needed**
@@ -46,14 +48,26 @@ During development, run two servers in separate terminals:
 
 1. Backend (Express, port 3000), in the project root:
    `npm run dev`
-2. Frontend (Vite, port 5173), in `frontend/`:
-   `npm run dev`
+2. Frontend (Vite, port 5173), also in the project root:
+   `npm run dev -w frontend`
 
 Open `http://localhost:5173`. Requests to `/api` are forwarded to Express.
+
+#### Adding packages
+
+| Where    | Command                             |
+| -------- | ----------------------------------- |
+| Server   | `npm install <package>`             |
+| Frontend | `npm install <package> -w frontend` |
+
+After `git pull`, run `npm install` in the project root.
 
 #### Start server
 
 `npm start`
+
+This first builds the frontend (`frontend/dist`), then starts the server.
+Open `http://localhost:3000`.
 
 #### Routes
 

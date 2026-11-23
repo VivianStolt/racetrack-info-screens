@@ -3,7 +3,7 @@
 - **Question:** Should the backend use `require` (CommonJS) or `import` (ES modules)?
 - **Decision:** ES modules (`"type": "module"` in package.json).
 - **Why:** It is the official JavaScript standard, and Vite and React already use it, so frontend and backend code look the same. Also socket.io tutorial recommended it:
-![alt text](img/image.png)
+  ![alt text](img/image.png)
 - **Alternatives:** CommonJS, the default at the start. Rejected because it is Node's older format.
 - **Consequences:** use `import`, add `.js` to own file imports, use `import.meta.dirname` instead of `__dirname`.
 
@@ -72,3 +72,18 @@
   - Vite must be restarted after changing `vite.config.js`.
   - The proxy only exists in development. `npm start` must serve the built frontend from Express (not done yet).
   - REMEMBER TO TELL JOONATAN IF SOCKET CONNECTION IS ALSO DONE THROUGH PROXY
+
+### npm workspaces (monorepo) for backend and frontend
+
+- **Question:** The backend (Express) and the frontend (Vite + React) have their own `package.json` files. The reviewer runs `npm install` and `npm start` in the project root. How do they get the frontend installed and built without extra steps?
+- **Decision:** npm workspaces. The root `package.json` lists `"workspaces": ["frontend"]`. One `npm install` in the root installs both packages, and a `prestart` script builds the frontend before `npm start`.
+- **Why:**
+  - The reviewer only needs `npm install` and `npm start`. There are no extra steps to read or forget.
+  - One `package-lock.json` in the root, so both of us have the same package versions.
+  - The build runs on every `npm start`, so the served frontend is never out of date.
+- **Alternatives:**
+  - **README instructions.** Install and build the frontend manually before `npm start`. Rejected: if the reviewer skips a step, nothing works.
+- **Consequences:**
+  - `frontend/package-lock.json` is removed. The root lock file is the only one.
+  - Frontend packages are installed from the root with `-w frontend` (e.g. `npm install react-router -w frontend`). Without `-w frontend`, the package goes into the root `package.json`.
+  - After `git pull`, run `npm install` in the root.

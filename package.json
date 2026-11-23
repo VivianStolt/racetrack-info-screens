@@ -10,7 +10,9 @@
 	"scripts": {
 		"test": "echo \"Error: no test specified\" && exit 1",
 		"start": "node --env-file-if-exists=.env server.js",
-		"dev": "NODE_ENV=development node --env-file-if-exists=.env server.js"
+		"dev": "NODE_ENV=development node --env-file-if-exists=.env server.js",
+		"build": "npm run build -w frontend",
+		"prestart": "npm run build"
 	},
 	"repository": {
 		"type": "git",
@@ -20,6 +22,9 @@
 	"author": "",
 	"license": "ISC",
 	"type": "module",
+	"workspaces": [
+		"frontend"
+	],
 	"bugs": {
 		"url": "https://github.com/VivianStolt/racetrack-info-screens/issues"
 	},
