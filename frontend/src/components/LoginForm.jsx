@@ -14,18 +14,20 @@ function LoginForm({ onLoggedInStation, thisStation }) {
 		const formData = new FormData(form);
 		const formStation = formData.get('station');
 		const formAccessKey = formData.get('accessKey');
+		const station = thisStation ?? formStation;
 
 		const response = await fetch('/api/login', {
 			method: 'POST',
 			headers: { 'Content-Type': 'application/json' },
 			body: JSON.stringify({
-				station: formStation,
+				station,
 				accessKey: formAccessKey,
 			}),
 		});
 		if (response.status === 200) {
-			onLoggedInStation(thisStation ?? formStation);
-			navigate(formStation);
+			onLoggedInStation(station);
+			navigate(station);
+			// establishConnection()
 		}
 
 		setError(getLoginError(response.status));
