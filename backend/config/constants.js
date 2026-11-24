@@ -3,3 +3,4 @@ export const USAGE_GUIDE = `export RECEPTIONIST_KEY=<your-key>\nexport OBSERVER_
 export const WRONG_KEY_DELAY_MS = 500;
 
 export const PORT = 3000;
+export const FRONTEND_PORT = 5173;

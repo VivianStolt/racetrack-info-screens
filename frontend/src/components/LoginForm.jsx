@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import getLoginError from '../config/loginErrors.js';
 import { STATIONS } from '../config/stations.js';
+import { socket } from '../socket';
 import StationRadio from './StationRadio.jsx';
 
 function LoginForm({ onLoggedInStation, thisStation }) {
@@ -24,10 +25,12 @@ function LoginForm({ onLoggedInStation, thisStation }) {
 				accessKey: formAccessKey,
 			}),
 		});
+
 		if (response.status === 200) {
 			onLoggedInStation(station);
 			navigate(station);
-			// establishConnection()
+
+			socket.open();
 		}
 
 		setError(getLoginError(response.status));
