@@ -1,7 +1,6 @@
-import LoginForm from './components/LoginForm.jsx';
-import './App.css';
 import { useState } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router';
+import LoginForm from './components/LoginForm.jsx';
 import RequireLogin from './components/RequireLogin.jsx';
 import FrontDesk from './pages/FrontDesk.jsx';
 import LapLineTracker from './pages/LapLineTracker.jsx';
