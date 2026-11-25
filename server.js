@@ -17,8 +17,9 @@ export const ACCESS_KEYS = {
 function init() {
 	const missing = Object.values(ACCESS_KEYS).filter((key) => !process.env[key]);
 	if (missing.length > 0) {
-		console.error(`The following keys do not exist: ${missing.join(', ')}`);
-		console.error(USAGE_GUIDE);
+		console.error(
+			`The following keys do not exist: ${missing.join(', ')}\n${USAGE_GUIDE}`,
+		);
 		process.exit(1);
 	}
 

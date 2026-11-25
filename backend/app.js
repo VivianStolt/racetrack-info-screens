@@ -3,12 +3,8 @@ import path from 'node:path';
 import express from 'express';
 import { Server } from 'socket.io';
 import { ACCESS_KEYS, DIST_PATH, RACE_DURATION_MINUTES } from '../server.js';
-import {
-	FRONTEND_PORT,
-	PORT,
-	USAGE_GUIDE,
-	WRONG_KEY_DELAY_MS,
-} from './config/constants.js';
+import { FRONTEND_PORT, PORT, WRONG_KEY_DELAY_MS } from './config/constants.js';
+import * as eventHandlers from './socket/events.js';
 
 export function initServer() {
 	const app = express();
@@ -23,7 +19,7 @@ export function initServer() {
 		},
 	});
 
-	app.get('/', (req, res) => {
+	app.get('/', (_req, res) => {
 		res.send(`Race duration: ${RACE_DURATION_MINUTES} min.`);
 	});
 
@@ -41,9 +37,7 @@ export function initServer() {
 		console.log(`Listening on port http://localhost:${PORT}/`);
 	});
 
-	io.on('connection', (socket) => {
-		console.log('connected', socket.id);
-	});
+	eventHandlers.initConnections(io);
 }
 
 function handleLogin(req, res) {
