@@ -37,3 +37,29 @@ Example:
 
 **Used by:** `frontend/src/components/LoginForm.jsx`
 **After a successful login:** the frontend calls `establishConnection()` (Socket.IO, see below).
+
+## Sockets
+
+### Opening sockets
+
+The frontend creates a client socket when a station is opened by a client.  
+(`frontend/src/socket.js -> export socket`)  
+
+After successful authentication, the client socket opens a connection to the server.  
+(`frontend/src/socket.js -> establishConnection`)  
+
+Client sockets are then configured on the server to correspond to their own stations and join rooms (see below).  
+(`backend/socket/events.js -> setupConnection`)
+
+### Rooms
+
+Socket.io uses rooms to communicate changes from the server to clients.
+
+| Room   | Client type   |
+| -------- | -------------- |
+| `Public` | All clients |
+| `Private` | `/front-desk`<br>`/race-control`<br>`/lap-line-tracker` |
+
+### Events
+
+![alt text](img/sockets.svg)
