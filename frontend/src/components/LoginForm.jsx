@@ -31,7 +31,6 @@ function LoginForm({ onLoggedInStation, thisStation }) {
 			navigate(station);
 
 			establishConnection(station);
-			//socket.open();
 		}
 
 		setError(getLoginError(response.status));
