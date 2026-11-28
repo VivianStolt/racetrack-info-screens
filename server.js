@@ -13,6 +13,9 @@ function hasConfig() {
 	return true;
 }
 
+// Start server if ACCESS_KEYS are defined, otherwise graceful exit
 if (hasConfig()) {
 	initServer();
+} else {
+	process.exitCode = 1;
 }
