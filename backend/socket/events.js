@@ -1,4 +1,4 @@
-import { PRIVATE_STATIONS } from '../config/constants.js';
+import { ACCESS_KEYS } from '../config/constants.js';
 import * as frontdesk from '../controllers/frontdesk.js';
 
 function initConnections(io) {
@@ -22,7 +22,7 @@ function initConnections(io) {
 }
 
 function setupConnection(socket, station) {
-	if (PRIVATE_STATIONS.includes(station)) {
+	if (station in ACCESS_KEYS) {
 		socket.join('private');
 	}
 
